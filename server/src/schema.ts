@@ -1,6 +1,12 @@
 import gql from "graphql-tag";
 
 export const typeDefs = gql`
+
+  type Mutation {
+    incrementTrackViews(id:ID!): IncrementViewResponse!
+
+  }
+
   type Query {
     "Query to get tracks array for the homepage grid"
     tracksForHome: [Track!]!
@@ -8,6 +14,12 @@ export const typeDefs = gql`
     track(id: ID!): Track!
     "Fetch a specific module, provided a module's ID"
     module(id: ID!): Module!
+  }
+  type IncrementViewResponse {
+    code: Int!
+    success: Boolean!
+    message: String!
+    track: Track
   }
 
   "A track is a group of Modules that teaches about a specific topic"
